@@ -51,3 +51,10 @@ func checkOtp(to string) {
 		fmt.Println("Incorrect!")
 	}
 }
+
+func main() {
+	to := "<your phone number here>"
+
+	sendOtp(to)
+	checkOtp(to)
+}
