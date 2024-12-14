@@ -1,60 +1,96 @@
 package main
 
 import (
+	"bufio"
+	"flag"
 	"fmt"
 	"os"
 
 	"github.com/twilio/twilio-go"
-	openapi "github.com/twilio/twilio-go/rest/verify/v2"
+	verifyV2 "github.com/twilio/twilio-go/rest/verify/v2"
 )
 
+// Twilio client (initialized once)
 var (
-	TWILIO_ACCOUNT_SID string             = os.Getenv("TWILIO_ACCOUNT_SID")
-	TWILIO_AUTH_TOKEN  string             = os.Getenv("TWILIO_AUTH_TOKEN")
-	VERIFY_SERVICE_SID string             = os.Getenv("VERIFY_SERVICE_SID")
-	client             *twilio.RestClient = twilio.NewRestClientWithParams(twilio.ClientParams{
-		Username: TWILIO_ACCOUNT_SID,
-		Password: TWILIO_AUTH_TOKEN,
-	})
+	client    *twilio.RestClient
+	verifySid string
 )
 
-func sendOtp(to string) {
-	params := &openapi.CreateVerificationParams{}
-	params.SetTo(to)
-	params.SetChannel("sms")
+func init() {
+	// Read credentials from environment variables
+	accountSid := os.Getenv("TWILIO_ACCOUNT_SID")
+	authToken := os.Getenv("TWILIO_AUTH_TOKEN")
+	verifySid = os.Getenv("TWILIO_VERIFY_SID")
 
-	resp, err := client.VerifyV2.CreateVerification(VERIFY_SERVICE_SID, params)
-
-	if err != nil {
-		fmt.Println(err.Error())
-	} else {
-		fmt.Printf("Sent verification '%s'\n", *resp.Sid)
+	if accountSid == "" || authToken == "" || verifySid == "" {
+		fmt.Println("Error: Missing Twilio credentials in environment variables")
+		os.Exit(1)
 	}
-}
 
-func checkOtp(to string) {
-	var code string
-	fmt.Println("Please check your phone and enter the code:")
-	fmt.Scanln(&code)
-
-	params := &openapi.CreateVerificationCheckParams{}
-	params.SetTo(to)
-	params.SetCode(code)
-
-	resp, err := client.VerifyV2.CreateVerificationCheck(VERIFY_SERVICE_SID, params)
-
-	if err != nil {
-		fmt.Println(err.Error())
-	} else if *resp.Status == "approved" {
-		fmt.Println("Correct!")
-	} else {
-		fmt.Println("Incorrect!")
-	}
+	client = twilio.NewRestClientWithParams(twilio.ClientParams{
+		Username: accountSid,
+		Password: authToken,
+	})
 }
 
 func main() {
-	to := "<your phone number here>"
+	// Define a command-line flag for the phone number
+	phoneNumber := flag.String("phone", "", "The phone number to verify (e.g., +1234567890)")
+	flag.Parse()
 
-	sendOtp(to)
-	checkOtp(to)
+	// Check if the phone number is provided
+	if *phoneNumber == "" {
+		fmt.Println("Error: Please provide a phone number using the -phone flag")
+		os.Exit(1)
+	}
+
+	// Step 1: Send verification SMS
+	if err := sendVerification(*phoneNumber, "sms"); err != nil {
+		fmt.Printf("Error sending verification: %v\n", err)
+		return
+	}
+
+	// Step 2: Read OTP from user
+	otpCode := getOTPFromUser()
+
+	// Step 3: Verify OTP
+	if err := verifyOTP(*phoneNumber, otpCode); err != nil {
+		fmt.Printf("Error verifying OTP: %v\n", err)
+		return
+	}
+}
+
+func sendVerification(to, channel string) error {
+	params := &verifyV2.CreateVerificationParams{}
+	params.SetTo(to)
+	params.SetChannel(channel)
+
+	verification, err := client.VerifyV2.CreateVerification(verifySid, params)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Verification sent: %v\n", *verification.Status)
+	return nil
+}
+
+func verifyOTP(to, code string) error {
+	params := &verifyV2.CreateVerificationCheckParams{}
+	params.SetTo(to)
+	params.SetCode(code)
+
+	verificationCheck, err := client.VerifyV2.CreateVerificationCheck(verifySid, params)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Verification status: %v\n", *verificationCheck.Status)
+	return nil
+}
+
+func getOTPFromUser() string {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Please enter the OTP: ")
+	otpCode, _ := reader.ReadString('\n')
+	return otpCode[:len(otpCode)-1] // Remove trailing newline character
 }
