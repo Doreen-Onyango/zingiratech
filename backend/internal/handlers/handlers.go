@@ -35,6 +35,11 @@ func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
 	utils.RenderTemplate(w, "404.page.html", nil)
 }
 
+func UnauthorizedHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusNotFound)
+	utils.RenderTemplate(w, "401.page.html", nil)
+}
+
 // ForbiddenHandler sends a 403 Forbidden response.
 func ForbiddenHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusForbidden)
