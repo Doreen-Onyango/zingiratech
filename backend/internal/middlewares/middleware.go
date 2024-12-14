@@ -17,6 +17,17 @@ var validRoutes = map[string]bool{
 // Supported static file extensions
 var validExtensions = []string{".css", ".js", ".jpg", ".png", ".gif", ".svg"}
 
+// Middleware type and chaining function
+type Middleware func(http.Handler) http.Handler
+
+// Middleware for logging requests
+func Logger(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("Request: %s %s from %s", r.Method, r.URL.Path, r.RemoteAddr)
+		next.ServeHTTP(w, r)
+	})
+}
+
 // InitRoutes initializes all application routes.
 func InitRoutes(mux *http.ServeMux) {
 	dir, err := utils.GetProjectRootPath("frontend", "static")
@@ -66,4 +77,54 @@ func isValidExtension(path string) bool {
 		}
 	}
 	return false
+}
+
+// Middleware for recovering from panics
+func Recovery(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if err := recover(); err != nil {
+				log.Printf("Panic recovered: %v (Request: %s %s)", err, r.Method, r.URL.Path)
+				handlers.InternalServerHandler(w, r)
+			}
+		}()
+		next.ServeHTTP(w, r)
+	})
+}
+
+// Middleware for unified route checking and static file validation
+func UnifiedRouteChecker(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Handle static files
+		if strings.HasPrefix(r.URL.Path, "/static/") {
+			if !isValidExtension(r.URL.Path) {
+				handlers.ForbiddenHandler(w, r)
+				return
+			}
+			next.ServeHTTP(w, r)
+			return
+		}
+
+		// Validate dynamic routes
+		if _, ok := validRoutes[r.URL.Path]; !ok {
+			handlers.NotFoundHandler(w, r)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
+// Middleware for handling CORS
+func CORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
 }
