@@ -4,10 +4,18 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/Doreen-Onyango/zingiratech/backend/internal/auth"
 )
 
 func main() {
-	wrapper, err := Config()
+	// Initialize Firebase Auth Service
+	authService, err := auth.NewAuthService()
+	if err != nil {
+		log.Fatalf("Failed to initialize Firebase: %v", err)
+	}
+
+	wrapper, err := Config(authService)
 	if err != nil {
 		log.Fatalf("Configuration failed: %v", err)
 	}
