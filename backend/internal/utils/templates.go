@@ -114,3 +114,10 @@ func LoadTemplates() error {
 
 	return nil
 }
+
+// RegisterFunc registers a custom function for use in templates.
+func RegisterFunc(name string, function interface{}) {
+	mu.Lock()
+	fn[name] = function
+	mu.Unlock()
+}
