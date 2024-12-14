@@ -589,22 +589,78 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     background: white;
     border-radius: 20px;
-    padding: 0;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
     transition: all 0.4s ease;
 }
 
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
 .feature-icon-wrapper {
     position: relative;
-    padding: 2rem;
+    height: 200px; /* Fixed height for the image area */
     background: var(--primary-light);
     overflow: hidden;
+}
+
+.feature-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.feature-card:hover .feature-image img {
+    transform: scale(1.1);
+}
+
+.feature-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 .feature-content {
     padding: 2rem;
     position: relative;
+}
+
+.feature-content h3 {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    margin-bottom: 0.75rem;
+}
+
+.feature-content p {
+    color: var(--secondary-color);
+    margin-bottom: 0;
+    line-height: 1.6;
 }
 
 .feature-number {
@@ -614,6 +670,19 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 3rem;
     font-weight: 700;
     color: rgba(46, 204, 113, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .feature-icon-wrapper {
+        height: 180px;
+    }
 }
 
 /* Updated How It Works Section */
