@@ -2,6 +2,7 @@ package middlewares
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"strings"
 
@@ -10,6 +11,10 @@ import (
 
 func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		authService, err := auth.NewAuthService()
+		if err != nil {
+			log.Fatalf("Failed to initialize Firebase: %v", err)
+		}
 		// Get the Authorization header
 		authHeader := r.Header.Get("Authorization")
 		if authHeader == "" {
@@ -25,7 +30,7 @@ func AuthMiddleware(next http.Handler) http.Handler {
 		}
 
 		// Verify the token
-		token, err := auth.VerifyIDToken(r.Context(), idToken)
+		token, err := authService.VerifyIDToken(r.Context(), idToken)
 		if err != nil {
 			http.Error(w, "Invalid token", http.StatusUnauthorized)
 			return
@@ -35,4 +40,4 @@ func AuthMiddleware(next http.Handler) http.Handler {
 		ctx := context.WithValue(r.Context(), "user", token)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
-} 
+}
