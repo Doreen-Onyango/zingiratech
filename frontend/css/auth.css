@@ -87,13 +87,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-top: 10px;
 }
 
-.remember-me {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.remember-me input[type="checkbox"] {
+    width: 16px; /* Set checkbox size */
+    height: 16px; /* Set checkbox size */
+    cursor: pointer; /* Add pointer cursor for the checkbox */
+    accent-color: #007BFF; /* Set custom checkbox color for modern browsers */
 }
 
 .forgot-password {
