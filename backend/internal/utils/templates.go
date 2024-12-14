@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"path/filepath"
 	"sync"
 	"text/template"
 )
@@ -62,4 +63,54 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 		log.Printf("ERROR: %s", errMsg)
 		RenderServerErrorTemplate(w, http.StatusInternalServerError, errMsg)
 	}
+}
+
+// LoadTemplates loads and caches templates from the specified directory.
+func LoadTemplates() error {
+	cache := map[string]*template.Template{}
+
+	baseDir, err := GetProjectRootPath("frontend", "templates")
+	if err != nil {
+		return fmt.Errorf("could not find project root: %w", err)
+	}
+
+	// Load pages
+	pagePattern := filepath.Join(baseDir, "*.page.html")
+	pages, err := filepath.Glob(pagePattern)
+	if err != nil {
+		return fmt.Errorf("error finding page templates: %w", err)
+	}
+
+	// Load layouts
+	layoutPattern := filepath.Join(baseDir, "*.layout.html")
+	layouts, err := filepath.Glob(layoutPattern)
+	if err != nil {
+		return fmt.Errorf("error finding layout templates: %w", err)
+	}
+
+	// Parse templates
+	for _, page := range pages {
+		name := filepath.Base(page)
+
+		ts, err := template.New(name).Funcs(fn).ParseFiles(page)
+		if err != nil {
+			return fmt.Errorf("error parsing page template %s: %w", name, err)
+		}
+
+		if len(layouts) > 0 {
+			ts, err = ts.ParseGlob(layoutPattern)
+			if err != nil {
+				return fmt.Errorf("error parsing layout templates: %w", err)
+			}
+		}
+
+		cache[name] = ts
+		log.Printf("Loaded template: %s", name)
+	}
+
+	mu.Lock()
+	TemplateCache = cache
+	mu.Unlock()
+
+	return nil
 }
