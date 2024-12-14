@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup History - ZingiraTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar (same as schedule page) -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.svg" alt="ZingiraTech" class="logo">
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard-user.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="schedule-pickup.html" class="nav-item">
+                <i class="fas fa-calendar-plus"></i>
+                <span>Schedule Pickup</span>
+            </a>
+            <a href="pickup-history.html" class="nav-item active">
+                <i class="fas fa-history"></i>
+                <span>Pickup History</span>
+            </a>
+            <a href="rewards.html" class="nav-item">
+                <i class="fas fa-gift"></i>
+                <span>Rewards</span>
+            </a>
+            <a href="#settings" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="/" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Pickup History</h1>
+                <p>Track your e-waste disposal history</p>
+            </div>
+            
+            <div class="header-right">
+                <div class="user-profile">
+                    <img src="images/user-avatar.jpg" alt="User">
+                    <span>Rodgers</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="history-container">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Recycled</h3>
+                        <p class="stat-number">245 kg</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 12% from last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Pickups</h3>
+                        <p class="stat-number">18</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 3 more than last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Carbon Offset</h3>
+                        <p class="stat-number">1.2 tons</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> Growing impact
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Recycling Trends</h3>
+                    <canvas id="recyclingTrends"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Waste Composition</h3>
+                    <canvas id="wasteComposition"></canvas>
+                </div>
+            </div>
+
+            <!-- History Table -->
+            <div class="history-card">
+                <div class="history-header">
+                    <h3>Recent Pickups</h3>
+                    <div class="history-filters">
+                        <select id="timeFilter">
+                            <option value="all">All Time</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                        </select>
+                        <button class="export-btn">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <div class="history-table-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Impact</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Table rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html> 

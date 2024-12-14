@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Waste Dashboard - ZingiraTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-recycle"></i>
+                <span>ZingiraTech</span>
+            </a>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="#overview">
+                        <i class="fas fa-th-large"></i>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#pickups">
+                        <i class="fas fa-truck"></i>
+                        <span>My Pickups</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="schedule-pickup.html">
+                        <i class="fas fa-calendar"></i>
+                        <span>Schedule</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#messages">
+                        <i class="fas fa-comment"></i>
+                        <span>Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#logout" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Overview</h1>
+                <p>Welcome back, Rodgers</p>
+            </div>
+            
+            <div class="header-right">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <button class="new-pickup-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="user-profile">
+                    <img src="images/user-avatar.jpg" alt="User">
+                    <span>Rodgers</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Left Column -->
+            <div class="main-content">
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-tabs">
+                        <button class="active">All <span>60</span></button>
+                        <button>Scheduled <span>20</span></button>
+                        <button>In Progress <span>15</span></button>
+                        <button>Completed <span>25</span></button>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="view-btn">
+                            <i class="fas fa-th-list"></i>
+                        </button>
+                        <button class="filter-btn">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pickup Cards Grid -->
+                <div class="pickup-grid">
+                    <div class="pickup-card">
+                        <div class="card-icon electronics">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Electronics Pickup</h3>
+                            <div class="card-meta">
+                                <span class="team">Home Pickup</span>
+                                <span class="time">2 Days Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler1.jpg" alt="Recycler">
+                                    <span class="count">+2</span>
+                                </div>
+                                <span class="status">75%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon batteries">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Battery Collection</h3>
+                            <div class="card-meta">
+                                <span class="team">Office Pickup</span>
+                                <span class="time">1 Week Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler2.jpg" alt="Recycler">
+                                    <span class="count">+1</span>
+                                </div>
+                                <span class="status">45%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon appliances">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Appliance Disposal</h3>
+                            <div class="card-meta">
+                                <span class="team">Bulk Pickup</span>
+                                <span class="time">3 Days Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler3.jpg" alt="Recycler">
+                                    <span class="count">+3</span>
+                                </div>
+                                <span class="status">90%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon phones">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Phone Recycling</h3>
+                            <div class="card-meta">
+                                <span class="team">Drop-off</span>
+                                <span class="time">5 Days Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 30%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler4.jpg" alt="Recycler">
+                                    <span class="count">+1</span>
+                                </div>
+                                <span class="status">30%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon computers">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Computer Recycling</h3>
+                            <div class="card-meta">
+                                <span class="team">Business Pickup</span>
+                                <span class="time">1 Day Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 95%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler5.jpg" alt="Recycler">
+                                    <span class="count">+2</span>
+                                </div>
+                                <span class="status">95%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon accessories">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Accessories Pickup</h3>
+                            <div class="card-meta">
+                                <span class="team">Store Pickup</span>
+                                <span class="time">4 Days Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler6.jpg" alt="Recycler">
+                                    <span class="count">+2</span>
+                                </div>
+                                <span class="status">60%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon printers">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Printer Recycling</h3>
+                            <div class="card-meta">
+                                <span class="team">Office Pickup</span>
+                                <span class="time">1 Week Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 15%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler7.jpg" alt="Recycler">
+                                    <span class="count">+1</span>
+                                </div>
+                                <span class="status">15%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon cables">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Cable Collection</h3>
+                            <div class="card-meta">
+                                <span class="team">Residential</span>
+                                <span class="time">Completed</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler8.jpg" alt="Recycler">
+                                    <span class="count">+2</span>
+                                </div>
+                                <span class="status">100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card">
+                        <div class="card-icon monitors">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Monitor Collection</h3>
+                            <div class="card-meta">
+                                <span class="team">Business</span>
+                                <span class="time">3 Days Left</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 50%"></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="members">
+                                    <img src="images/recycler9.jpg" alt="Recycler">
+                                    <span class="count">+1</span>
+                                </div>
+                                <span class="status">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="info-sections">
+                <!-- Environmental Impact Card -->
+                <div class="eco-impact-card">
+                    <div class="impact-header">
+                        <h3>Your Green Impact</h3>
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="impact-stats">
+                        <div class="impact-item">
+                            <div class="impact-number">125kg</div>
+                            <div class="impact-label">CO₂ Reduced</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-number">45kg</div>
+                            <div class="impact-label">E-Waste Recycled</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recycling Tips -->
+                <div class="info-section recycling-tips">
+                    <h3><i class="fas fa-lightbulb"></i> Recycling Tips</h3>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Battery Handling</h4>
+                            <p>Always remove batteries from devices before recycling</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Data Security</h4>
+                            <p>Remember to wipe your devices before disposal</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Original Packaging</h4>
+                            <p>Keep original boxes for electronics when possible - they're perfect for safe transport</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Storage Conditions</h4>
+                            <p>Store e-waste in a cool, dry place before pickup to prevent degradation</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">
+                            <i class="fas fa-sort"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Pre-sorting</h4>
+                            <p>Group similar items together to make recycling more efficient</p>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

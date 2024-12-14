@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards - ZingiraTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/rewards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.svg" alt="ZingiraTech" class="logo">
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard-user.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="schedule-pickup.html" class="nav-item">
+                <i class="fas fa-calendar-plus"></i>
+                <span>Schedule Pickup</span>
+            </a>
+            <a href="pickup-history.html" class="nav-item">
+                <i class="fas fa-history"></i>
+                <span>Pickup History</span>
+            </a>
+            <a href="rewards.html" class="nav-item active">
+                <i class="fas fa-gift"></i>
+                <span>Rewards</span>
+            </a>
+            <a href="#settings" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="/" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Rewards Program</h1>
+                <p>Earn points for your recycling efforts</p>
+            </div>
+            
+            <div class="header-right">
+                <div class="points-display">
+                    <i class="fas fa-star"></i>
+                    <span class="points-value">2,450</span>
+                    <span class="points-label">points</span>
+                </div>
+                <div class="user-profile">
+                    <img src="images/user-avatar.jpg" alt="User">
+                    <span>Rodgers</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="rewards-container">
+            <!-- Points Summary -->
+            <div class="points-summary">
+                <div class="summary-card total-points">
+                    <div class="summary-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="summary-info">
+                        <h3>Total Points</h3>
+                        <p>2,450</p>
+                        <span>Lifetime earnings: 3,200</span>
+                    </div>
+                </div>
+
+                <div class="summary-card points-rate">
+                    <div class="summary-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="summary-info">
+                        <h3>Points Rate</h3>
+                        <p>10 points/kg</p>
+                        <span>of e-waste recycled</span>
+                    </div>
+                </div>
+
+                <div class="summary-card next-tier">
+                    <div class="summary-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="summary-info">
+                        <h3>Next Tier</h3>
+                        <p>550 points to Gold</p>
+                        <div class="tier-progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rewards Catalog -->
+            <div class="rewards-section">
+                <div class="section-header">
+                    <h2>Available Rewards</h2>
+                    <div class="catalog-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="vouchers">Vouchers</button>
+                        <button class="filter-btn" data-filter="products">Products</button>
+                        <button class="filter-btn" data-filter="services">Services</button>
+                    </div>
+                </div>
+
+                <div class="rewards-grid">
+                    <!-- Reward Cards -->
+                    <div class="reward-card" data-category="vouchers">
+                        <div class="reward-image">
+                            <img src="images/rewards/shopping-voucher.png" alt="Shopping Voucher">
+                            <span class="points-required">500 points</span>
+                        </div>
+                        <div class="reward-info">
+                            <h3>Shopping Voucher</h3>
+                            <p>$50 shopping voucher at eco-friendly stores</p>
+                            <button class="redeem-btn">Redeem Reward</button>
+                        </div>
+                    </div>
+
+                    <div class="reward-card" data-category="products">
+                        <div class="reward-image">
+                            <img src="images/rewards/eco-bag.png" alt="Eco Bag">
+                            <span class="points-required">200 points</span>
+                        </div>
+                        <div class="reward-info">
+                            <h3>Reusable Eco Bag</h3>
+                            <p>Premium quality reusable shopping bag</p>
+                            <button class="redeem-btn">Redeem Reward</button>
+                        </div>
+                    </div>
+
+                    <div class="reward-card" data-category="services">
+                        <div class="reward-image">
+                            <img src="images/rewards/laptop.jpg" alt="Premium Service">
+                            <span class="points-required">1000 points</span>
+                        </div>
+                        <div class="reward-info">
+                            <h3>Premium Pickup Service</h3>
+                            <p>1 month of premium pickup service</p>
+                            <button class="redeem-btn">Redeem Reward</button>
+                        </div>
+                    </div>
+
+                    <!-- Add more reward cards as needed -->
+                </div>
+            </div>
+
+            <!-- Redemption History -->
+            <div class="history-section">
+                <h2>Redemption History</h2>
+                <div class="history-table-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Reward</th>
+                                <th>Points Used</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="redemptionHistory">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html> 

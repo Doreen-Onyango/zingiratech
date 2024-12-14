@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Pickup - ZingiraTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.svg" alt="ZingiraTech" class="logo">
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard-user.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="schedule-pickup.html" class="nav-item active">
+                <i class="fas fa-calendar-plus"></i>
+                <span>Schedule Pickup</span>
+            </a>
+            <a href="pickup-history.html" class="nav-item">
+                <i class="fas fa-history"></i>
+                <span>Pickup History</span>
+            </a>
+            <a href="rewards.html" class="nav-item">
+                <i class="fas fa-gift"></i>
+                <span>Rewards</span>
+            </a>
+            <a href="#settings" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="/" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Schedule Pickup</h1>
+                <p>Book your e-waste collection</p>
+            </div>
+            
+            <div class="header-right">
+                <div class="user-profile">
+                    <img src="images/user-avatar.jpg" alt="User">
+                    <span>Rodgers</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="schedule-container">
+            <div class="schedule-grid">
+                <div class="schedule-form-card">
+                    <h2><i class="fas fa-clipboard-list"></i> Pickup Details</h2>
+                    <form id="scheduleForm" class="schedule-form">
+                        <div class="form-group">
+                            <label for="wasteType">Type of E-Waste</label>
+                            <select id="wasteType" required>
+                                <option value="">Select waste type</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="batteries">Batteries</option>
+                                <option value="appliances">Appliances</option>
+                                <option value="computers">Computers</option>
+                                <option value="phones">Phones</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group manufacturer-details">
+                            <label for="manufacturer">Manufacturer Details</label>
+                            <div class="manufacturer-fields">
+                                <div class="sub-field">
+                                    <label for="manufacturerName">Brand/Manufacturer</label>
+                                    <input type="text" id="manufacturerName" placeholder="e.g., Samsung, Apple, HP">
+                                </div>
+                                <div class="sub-field">
+                                    <label for="modelNumber">Model Number</label>
+                                    <input type="text" id="modelNumber" placeholder="e.g., SM-G950F, iPhone12">
+                                </div>
+                                <div class="sub-field">
+                                    <label for="manufactureYear">Year of Manufacture</label>
+                                    <input type="number" id="manufactureYear" min="1970" max="2024" placeholder="e.g., 2020">
+                                </div>
+                                <div class="sub-field">
+                                    <label for="condition">Device Condition</label>
+                                    <select id="condition">
+                                        <option value="">Select condition</option>
+                                        <option value="working">Working</option>
+                                        <option value="partially-working">Partially Working</option>
+                                        <option value="not-working">Not Working</option>
+                                        <option value="damaged">Physically Damaged</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Estimated Quantity (kg)</label>
+                            <input type="number" id="quantity" min="1" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickupDate">Preferred Date</label>
+                                <input type="date" id="pickupDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pickupTime">Preferred Time</label>
+                                <select id="pickupTime" required>
+                                    <option value="">Select time</option>
+                                    <option value="morning">Morning (8AM - 12PM)</option>
+                                    <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                                    <option value="evening">Evening (4PM - 6PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Pickup Address</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" rows="2"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Schedule Pickup</button>
+                    </form>
+                </div>
+
+                <div class="schedule-info">
+                    <div class="info-card pricing-card">
+                        <h3><i class="fas fa-tag"></i> Pricing</h3>
+                        <div class="pricing-list">
+                            <div class="pricing-item">
+                                <span>Electronics</span>
+                                <span>$2/kg</span>
+                            </div>
+                            <div class="pricing-item">
+                                <span>Batteries</span>
+                                <span>$3/kg</span>
+                            </div>
+                            <div class="pricing-item">
+                                <span>Appliances</span>
+                                <span>$1.5/kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card guidelines-card">
+                        <h3><i class="fas fa-info-circle"></i> Guidelines</h3>
+                        <ul class="guidelines-list">
+                            <li>Remove batteries from devices</li>
+                            <li>Keep items dry and protected</li>
+                            <li>Label boxes if possible</li>
+                            <li>Be present during pickup time</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card support-card">
+                        <h3><i class="fas fa-headset"></i> Need Help?</h3>
+                        <p>Our support team is available 24/7</p>
+                        <a href="tel:(254)-729-012-931" class="support-phone">
+                            <i class="fas fa-phone"></i>
+                            (254)-729-012-931
+                        </a>
+                        <a href="mailto:support@zingiratech.com" class="support-email">
+                            <i class="fas fa-envelope"></i>
+                            support@zingiratech.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/schedule.js"></script>
+</body>
+</html> 
