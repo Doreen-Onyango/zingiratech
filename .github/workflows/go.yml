@@ -23,6 +23,7 @@ jobs:
 
     - name: Build
       run: go mod init github.com/Doreen-Onyango/zingiratech && cd backend && cd cmd && go build -v .
+           go mod tidy
 
     - name: Test
       run: go test -v ./...
