@@ -1,0 +1,456 @@
+[debug] [2024-12-14T13:51:43.080Z] ----------------------------------------------------------------------
+[debug] [2024-12-14T13:51:43.094Z] Command:       /usr/bin/node /usr/local/bin/firebase init
+[debug] [2024-12-14T13:51:43.096Z] CLI Version:   13.29.1
+[debug] [2024-12-14T13:51:43.096Z] Platform:      linux
+[debug] [2024-12-14T13:51:43.097Z] Node Version:  v20.18.1
+[debug] [2024-12-14T13:51:43.097Z] Time:          Sat Dec 14 2024 16:51:43 GMT+0300 (East Africa Time)
+[debug] [2024-12-14T13:51:43.098Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-14T13:51:43.122Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-14T13:51:43.124Z] > authorizing via signed-in user (kherld.hussein@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/kherld/dev/zingiratech/frontend
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-12-14T13:51:50.957Z] Checked if tokens are valid: false, expires at: 1734184536079
+[debug] [2024-12-14T13:51:50.958Z] Checked if tokens are valid: false, expires at: 1734184536079
+[debug] [2024-12-14T13:51:50.960Z] > refreshing access token with scopes: []
+[debug] [2024-12-14T13:51:50.969Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-12-14T13:51:50.969Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-12-14T13:51:51.728Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-12-14T13:51:51.728Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-12-14T13:51:51.756Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-12-14T13:51:52.812Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-12-14T13:51:52.813Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project zingira-tech (zingira-tech) 
+[info] 
+=== Dataconnect Setup
+[debug] [2024-12-14T13:51:54.090Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:54.091Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:54.091Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/zingira-tech/billingInfo [none]
+[debug] [2024-12-14T13:51:55.422Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/zingira-tech/billingInfo 200
+[debug] [2024-12-14T13:51:55.423Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/zingira-tech/billingInfo {"name":"projects/zingira-tech/billingInfo","projectId":"zingira-tech","billingAccountName":"","billingEnabled":false}
+[info] i  dataconnect: ensuring required API sqladmin.googleapis.com is enabled... 
+[debug] [2024-12-14T13:51:55.426Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:55.427Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:55.427Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/sqladmin.googleapis.com [none]
+[debug] [2024-12-14T13:51:55.427Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/sqladmin.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:51:57.512Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/sqladmin.googleapis.com 200
+[debug] [2024-12-14T13:51:57.513Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/sqladmin.googleapis.com [omitted]
+[info] ✔  dataconnect: required API sqladmin.googleapis.com is enabled 
+[info] ✔  Wrote dataconnect/dataconnect.yaml 
+[info] ✔  Wrote dataconnect/schema/schema.gql 
+[info] ✔  Wrote dataconnect/connector/connector.yaml 
+[info] ✔  Wrote dataconnect/connector/queries.gql 
+[info] ✔  Wrote dataconnect/connector/mutations.gql 
+[info] i  If you'd like to add the generated SDK to your app your, run firebase init dataconnect:sdk 
+[info] i  If you'd like to provision a CloudSQL Postgres instance on the Firebase Data Connect no-cost trial:
+1. Please upgrade to the pay-as-you-go (Blaze) billing plan. Visit the following page:
+     https://console.firebase.google.com/project/zingira-tech/usage/details
+2. Run firebase init dataconnect again to configure the Cloud SQL instance.
+3. Run firebase deploy --only dataconnect to deploy your Data Connect service. 
+[info] 
+=== Firestore Setup
+[debug] [2024-12-14T13:51:57.546Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:57.547Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:57.547Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/firestore.googleapis.com [none]
+[debug] [2024-12-14T13:51:57.548Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/firestore.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:51:58.997Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/firestore.googleapis.com 200
+[debug] [2024-12-14T13:51:58.997Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/firestore.googleapis.com [omitted]
+[debug] [2024-12-14T13:51:58.999Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:59.000Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:51:59.000Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default) [none]
+[debug] [2024-12-14T13:52:00.224Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default) 200
+[debug] [2024-12-14T13:52:00.224Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default) {"name":"projects/zingira-tech/databases/(default)","uid":"86bf6415-83ff-4022-b5e9-ce7e49259e6c","createTime":"2024-12-14T13:33:23.672429Z","updateTime":"2024-12-14T13:33:23.672429Z","locationId":"eur3","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2024-12-14T13:33:23.672429Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"e","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","etag":"IN6egYO0p4oDMO2i0u6vp4oD"}
+[debug] [2024-12-14T13:52:00.225Z] database_type: FIRESTORE_NATIVE
+[debug] [2024-12-14T13:52:00.225Z] database_type: FIRESTORE_NATIVE
+[debug] [2024-12-14T13:52:00.227Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-14T13:52:00.228Z] > authorizing via signed-in user (kherld.hussein@gmail.com)
+[debug] [2024-12-14T13:52:00.228Z] [iam] checking project zingira-tech for permissions ["firebase.projects.get"]
+[debug] [2024-12-14T13:52:00.230Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:00.230Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:00.231Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions [none]
+[debug] [2024-12-14T13:52:00.231Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:52:00.232Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-14T13:52:01.825Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions 200
+[debug] [2024-12-14T13:52:01.825Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2024-12-14T13:52:14.412Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:14.413Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:14.414Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/zingira-tech/releases pageSize=10&pageToken=
+[debug] [2024-12-14T13:52:15.831Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/zingira-tech/releases 200
+[debug] [2024-12-14T13:52:15.832Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/zingira-tech/releases {}
+[debug] [2024-12-14T13:52:15.832Z] No rulesets found, using default.
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2024-12-14T13:52:24.098Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:24.098Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:24.099Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:24.100Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:24.101Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2024-12-14T13:52:24.109Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2024-12-14T13:52:25.290Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2024-12-14T13:52:25.291Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2024-12-14T13:52:25.666Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2024-12-14T13:52:25.667Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/zingira-tech/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/zingira-tech/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] 
+=== Genkit Setup
+[debug] [2024-12-14T13:52:42.149Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-14T13:52:42.150Z] > authorizing via signed-in user (kherld.hussein@gmail.com)
+[debug] [2024-12-14T13:52:42.151Z] [iam] checking project zingira-tech for permissions ["firebase.projects.get"]
+[debug] [2024-12-14T13:52:42.151Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:42.152Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:42.152Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions [none]
+[debug] [2024-12-14T13:52:42.152Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:52:42.153Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-14T13:52:43.819Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions 200
+[debug] [2024-12-14T13:52:43.820Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-14T13:52:43.821Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:43.821Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:43.822Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:43.822Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:43.823Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-14T13:52:43.823Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:52:43.829Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-14T13:52:43.830Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:52:45.614Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-14T13:52:45.614Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-14T13:52:45.618Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-14T13:52:45.618Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2024-12-14T13:52:45.620Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:45.620Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:45.620Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2024-12-14T13:52:45.620Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:52:46.349Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2024-12-14T13:52:46.349Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com:enable [omitted]
+[debug] [2024-12-14T13:52:56.356Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:56.356Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:52:56.358Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-14T13:52:56.358Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:52:58.052Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-14T13:52:58.053Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] ✔  Wrote functions/package.json 
+[info] ✔  Wrote functions/.eslintrc.js 
+[info] ✔  Wrote functions/tsconfig.json 
+[info] ✔  Wrote functions/tsconfig.dev.json 
+[info] ✔  Wrote functions/src/index.ts 
+[info] ✔  Wrote functions/.gitignore 
+[info] 
+[info] i  genkit: Installing Genkit CLI version 0.9.12
+ 
+[error] ⬢  genkit: Genkit initialization failed: Error: spawn(npm, [install, -g, genkit-cli@0.9.12
+]) 
+ exited with code: 243 
+[info] 
+=== Functions Setup
+[debug] [2024-12-14T13:55:44.871Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-14T13:55:44.872Z] > authorizing via signed-in user (kherld.hussein@gmail.com)
+[debug] [2024-12-14T13:55:44.872Z] [iam] checking project zingira-tech for permissions ["firebase.projects.get"]
+[debug] [2024-12-14T13:55:44.872Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:55:44.872Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:55:44.872Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions [none]
+[debug] [2024-12-14T13:55:44.872Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:55:44.873Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-14T13:55:46.432Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions 200
+[debug] [2024-12-14T13:55:46.432Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/zingira-tech:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-14T13:55:46.433Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:55:46.433Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:55:46.434Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:55:46.434Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:55:46.435Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-14T13:55:46.435Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:55:46.440Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-14T13:55:46.441Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/zingira-tech
+[debug] [2024-12-14T13:55:48.153Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-14T13:55:48.154Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-14T13:55:48.171Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-14T13:55:48.171Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/zingira-tech/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
+[info] ✔  Wrote zingiratech/package.json 
+[info] ✔  Wrote zingiratech/.eslintrc.js 
+[info] ✔  Wrote zingiratech/index.js 
+[info] ✔  Wrote zingiratech/.gitignore 
+[info] 
+=== Apphosting Setup
+[debug] [2024-12-14T13:57:24.540Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:57:24.540Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:57:24.540Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/zingira-tech/billingInfo [none]
+[debug] [2024-12-14T13:57:26.001Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/zingira-tech/billingInfo 200
+[debug] [2024-12-14T13:57:26.002Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/zingira-tech/billingInfo {"name":"projects/zingira-tech/billingInfo","projectId":"zingira-tech","billingAccountName":"","billingEnabled":false}
+[info] i  Writing default settings to apphosting.yaml... 
+[info] ✔  Wrote apphosting.yaml 
+[info] ✔  Create a new App Hosting backend with `firebase apphosting:backends:create` 
+[info] 
+=== Hosting Setup
+[debug] [2024-12-14T13:57:26.013Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:57:26.013Z] Checked if tokens are valid: true, expires at: 1734187910729
+[debug] [2024-12-14T13:57:26.015Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/zingira-tech [none]
+[debug] [2024-12-14T13:57:26.632Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/zingira-tech 200
+[debug] [2024-12-14T13:57:26.632Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/zingira-tech {"projectId":"zingira-tech","projectNumber":"514753241996","displayName":"zingira-tech","name":"projects/zingira-tech","resources":{"hostingSite":"zingira-tech"},"state":"ACTIVE","etag":"1_86744810-2ac7-4de1-8f63-648be9fd3d51"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2024-12-14T13:59:20.198Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2024-12-14T13:59:20.576Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2024-12-14T13:59:20.577Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"11.1.0","browserURL":"https://www.gstatic.com/firebasejs/11.1.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/11.1.0/firebase.tgz"},"live":{"version":"11.1","browserURL":"https://www.gstatic.com/firebasejs/live/11.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/11.1/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/11.1.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/11.1.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/11.1.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/11.1.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/11.1.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/11.1.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/11.1.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/11.1.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/11.1.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js","vertexai":"https://www.gstatic.com/firebasejs/11.1.0/firebase-vertexai.js","data-connect":"https://www.gstatic.com/firebasejs/11.1.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.memory.js"}}
+[info] ✔  Wrote public/index.html 
+[info] 
+=== Storage Setup
+[info] 
+[info] Firebase Storage Security Rules allow you to define how and when to allow
+[info] uploads and downloads. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[info] ✔  Wrote storage.rules 
+[info] 
+=== Emulators Setup
+[info] i  apphosting: Initializing Emulator {"metadata":{"emulator":{"name":"apphosting"},"message":"Initializing Emulator"}}
+[warn] ⚠  Failed to auto-detect your project's start command. Consider manually setting the start command by setting `firebase.json#emulators.apphosting.startCommand` {"metadata":{"emulator":{"name":"apphosting"},"message":"Failed to auto-detect your project's start command. Consider manually setting the start command by setting `firebase.json#emulators.apphosting.startCommand`"}}
+[info] No configs selected to export
+[info] i  firestore: downloading cloud-firestore-emulator-v1.19.8.jar... {"metadata":{"emulator":{"name":"firestore"},"message":"downloading cloud-firestore-emulator-v1.19.8.jar..."}}
+[debug] [2024-12-14T14:00:51.378Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.19.8.jar 
+[debug] [2024-12-14T14:00:52.160Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.19.8.jar 200
+[debug] [2024-12-14T14:00:52.160Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.19.8.jar [stream]
+[info] i  database: downloading firebase-database-emulator-v4.11.2.jar... {"metadata":{"emulator":{"name":"database"},"message":"downloading firebase-database-emulator-v4.11.2.jar..."}}
+[debug] [2024-12-14T14:01:57.811Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/firebase-database-emulator-v4.11.2.jar 
+[debug] [2024-12-14T14:01:58.232Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/firebase-database-emulator-v4.11.2.jar 200
+[debug] [2024-12-14T14:01:58.233Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/firebase-database-emulator-v4.11.2.jar [stream]
+[info] i  pubsub: downloading pubsub-emulator-0.8.14.zip... {"metadata":{"emulator":{"name":"pubsub"},"message":"downloading pubsub-emulator-0.8.14.zip..."}}
+[debug] [2024-12-14T14:02:33.218Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/pubsub-emulator-0.8.14.zip 
+[debug] [2024-12-14T14:02:33.669Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/pubsub-emulator-0.8.14.zip 200
+[debug] [2024-12-14T14:02:33.670Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/pubsub-emulator-0.8.14.zip [stream]
+[debug] [2024-12-14T14:03:53.749Z] Data is 66786933
+[debug] [2024-12-14T14:03:53.751Z] [unzip] Entry: pubsub-emulator/ (compressed_size=2 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:03:53.751Z] [unzip] Processing entry: pubsub-emulator/
+[debug] [2024-12-14T14:03:53.751Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/
+[debug] [2024-12-14T14:03:53.753Z] [unzip] Entry: pubsub-emulator/lib/ (compressed_size=2 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:03:53.753Z] [unzip] Processing entry: pubsub-emulator/lib/
+[debug] [2024-12-14T14:03:53.753Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/lib/
+[debug] [2024-12-14T14:03:53.753Z] [unzip] Entry: pubsub-emulator/lib/cloud-pubsub-emulator-0.8.14-all.jar (compressed_size=66782880 bytes, uncompressed_size=71655096 bytes)
+[debug] [2024-12-14T14:03:53.753Z] [unzip] Processing entry: pubsub-emulator/lib/cloud-pubsub-emulator-0.8.14-all.jar
+[debug] [2024-12-14T14:03:53.753Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/lib
+[debug] [2024-12-14T14:03:53.754Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/lib/cloud-pubsub-emulator-0.8.14-all.jar
+[debug] [2024-12-14T14:03:54.542Z] [unzip] Entry: pubsub-emulator/bin/ (compressed_size=2 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:03:54.543Z] [unzip] Processing entry: pubsub-emulator/bin/
+[debug] [2024-12-14T14:03:54.543Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/bin/
+[debug] [2024-12-14T14:03:54.543Z] [unzip] Entry: pubsub-emulator/bin/cloud-pubsub-emulator.bat (compressed_size=889 bytes, uncompressed_size=2276 bytes)
+[debug] [2024-12-14T14:03:54.543Z] [unzip] Processing entry: pubsub-emulator/bin/cloud-pubsub-emulator.bat
+[debug] [2024-12-14T14:03:54.543Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/bin
+[debug] [2024-12-14T14:03:54.543Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/bin/cloud-pubsub-emulator.bat
+[debug] [2024-12-14T14:03:54.545Z] [unzip] Entry: pubsub-emulator/bin/cloud-pubsub-emulator (compressed_size=2284 bytes, uncompressed_size=5728 bytes)
+[debug] [2024-12-14T14:03:54.545Z] [unzip] Processing entry: pubsub-emulator/bin/cloud-pubsub-emulator
+[debug] [2024-12-14T14:03:54.545Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/bin
+[debug] [2024-12-14T14:03:54.546Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/pubsub-emulator-0.8.14/pubsub-emulator/bin/cloud-pubsub-emulator
+[info] i  storage: downloading cloud-storage-rules-runtime-v1.1.3.jar... {"metadata":{"emulator":{"name":"storage"},"message":"downloading cloud-storage-rules-runtime-v1.1.3.jar..."}}
+[debug] [2024-12-14T14:03:54.551Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar 
+[debug] [2024-12-14T14:03:55.044Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar 200
+[debug] [2024-12-14T14:03:55.045Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar [stream]
+[info] i  ui: downloading ui-v1.14.0.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.14.0.zip..."}}
+[debug] [2024-12-14T14:04:55.548Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.14.0.zip 
+[info] 
+=== Remoteconfig Setup
+[debug] [2024-12-14T14:04:55.867Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.14.0.zip 200
+[debug] [2024-12-14T14:04:55.867Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.14.0.zip [stream]
+[debug] [2024-12-14T14:04:59.660Z] Data is 3615311
+[debug] [2024-12-14T14:04:59.661Z] [unzip] Entry: client/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.661Z] [unzip] Processing entry: client/
+[debug] [2024-12-14T14:04:59.661Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/
+[debug] [2024-12-14T14:04:59.664Z] [unzip] Entry: client/favicon-16x16.png (compressed_size=293 bytes, uncompressed_size=293 bytes)
+[debug] [2024-12-14T14:04:59.665Z] [unzip] Processing entry: client/favicon-16x16.png
+[debug] [2024-12-14T14:04:59.665Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.667Z] [unzip] Writing file: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/favicon-16x16.png
+[debug] [2024-12-14T14:04:59.671Z] [unzip] Entry: client/safari-pinned-tab.svg (compressed_size=1433 bytes, uncompressed_size=2611 bytes)
+[debug] [2024-12-14T14:04:59.671Z] [unzip] Processing entry: client/safari-pinned-tab.svg
+[debug] [2024-12-14T14:04:59.671Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.673Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/safari-pinned-tab.svg
+[debug] [2024-12-14T14:04:59.680Z] [unzip] Entry: client/favicon.ico (compressed_size=2933 bytes, uncompressed_size=13294 bytes)
+[debug] [2024-12-14T14:04:59.680Z] [unzip] Processing entry: client/favicon.ico
+[debug] [2024-12-14T14:04:59.680Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.684Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/favicon.ico
+[debug] [2024-12-14T14:04:59.689Z] [unzip] Entry: client/index.html (compressed_size=1363 bytes, uncompressed_size=3071 bytes)
+[debug] [2024-12-14T14:04:59.689Z] [unzip] Processing entry: client/index.html
+[debug] [2024-12-14T14:04:59.690Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.692Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/index.html
+[debug] [2024-12-14T14:04:59.712Z] [unzip] Entry: client/android-chrome-192x192.png (compressed_size=2684 bytes, uncompressed_size=2684 bytes)
+[debug] [2024-12-14T14:04:59.712Z] [unzip] Processing entry: client/android-chrome-192x192.png
+[debug] [2024-12-14T14:04:59.712Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.713Z] [unzip] Writing file: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/android-chrome-192x192.png
+[debug] [2024-12-14T14:04:59.714Z] [unzip] Entry: client/apple-touch-icon.png (compressed_size=2123 bytes, uncompressed_size=2152 bytes)
+[debug] [2024-12-14T14:04:59.714Z] [unzip] Processing entry: client/apple-touch-icon.png
+[debug] [2024-12-14T14:04:59.714Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.715Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/apple-touch-icon.png
+[debug] [2024-12-14T14:04:59.722Z] [unzip] Entry: client/android-chrome-512x512.png (compressed_size=5369 bytes, uncompressed_size=5411 bytes)
+[debug] [2024-12-14T14:04:59.722Z] [unzip] Processing entry: client/android-chrome-512x512.png
+[debug] [2024-12-14T14:04:59.722Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.722Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/android-chrome-512x512.png
+[debug] [2024-12-14T14:04:59.724Z] [unzip] Entry: client/manifest.json (compressed_size=245 bytes, uncompressed_size=551 bytes)
+[debug] [2024-12-14T14:04:59.724Z] [unzip] Processing entry: client/manifest.json
+[debug] [2024-12-14T14:04:59.724Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.725Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/manifest.json
+[debug] [2024-12-14T14:04:59.727Z] [unzip] Entry: client/robots.txt (compressed_size=26 bytes, uncompressed_size=26 bytes)
+[debug] [2024-12-14T14:04:59.727Z] [unzip] Processing entry: client/robots.txt
+[debug] [2024-12-14T14:04:59.727Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.727Z] [unzip] Writing file: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/robots.txt
+[debug] [2024-12-14T14:04:59.728Z] [unzip] Entry: client/mstile-150x150.png (compressed_size=2034 bytes, uncompressed_size=2034 bytes)
+[debug] [2024-12-14T14:04:59.728Z] [unzip] Processing entry: client/mstile-150x150.png
+[debug] [2024-12-14T14:04:59.728Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.728Z] [unzip] Writing file: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/mstile-150x150.png
+[debug] [2024-12-14T14:04:59.729Z] [unzip] Entry: client/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.729Z] [unzip] Processing entry: client/assets/
+[debug] [2024-12-14T14:04:59.729Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/
+[debug] [2024-12-14T14:04:59.730Z] [unzip] Entry: client/assets/index-ClZTY_JS.js.map (compressed_size=2328270 bytes, uncompressed_size=9947004 bytes)
+[debug] [2024-12-14T14:04:59.730Z] [unzip] Processing entry: client/assets/index-ClZTY_JS.js.map
+[debug] [2024-12-14T14:04:59.730Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets
+[debug] [2024-12-14T14:04:59.730Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/index-ClZTY_JS.js.map
+[debug] [2024-12-14T14:04:59.857Z] [unzip] Entry: client/assets/index-ClZTY_JS.js (compressed_size=567195 bytes, uncompressed_size=2035940 bytes)
+[debug] [2024-12-14T14:04:59.857Z] [unzip] Processing entry: client/assets/index-ClZTY_JS.js
+[debug] [2024-12-14T14:04:59.857Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets
+[debug] [2024-12-14T14:04:59.858Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/index-ClZTY_JS.js
+[debug] [2024-12-14T14:04:59.881Z] [unzip] Entry: client/assets/index-BdgySamB.css (compressed_size=35979 bytes, uncompressed_size=298654 bytes)
+[debug] [2024-12-14T14:04:59.881Z] [unzip] Processing entry: client/assets/index-BdgySamB.css
+[debug] [2024-12-14T14:04:59.881Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets
+[debug] [2024-12-14T14:04:59.882Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/index-BdgySamB.css
+[debug] [2024-12-14T14:04:59.901Z] [unzip] Entry: client/assets/extensions/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.901Z] [unzip] Processing entry: client/assets/extensions/
+[debug] [2024-12-14T14:04:59.901Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/extensions/
+[debug] [2024-12-14T14:04:59.902Z] [unzip] Entry: client/assets/extensions/default-extension.png (compressed_size=1646 bytes, uncompressed_size=1657 bytes)
+[debug] [2024-12-14T14:04:59.902Z] [unzip] Processing entry: client/assets/extensions/default-extension.png
+[debug] [2024-12-14T14:04:59.902Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/extensions
+[debug] [2024-12-14T14:04:59.902Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/extensions/default-extension.png
+[debug] [2024-12-14T14:04:59.904Z] [unzip] Entry: client/assets/img/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.904Z] [unzip] Processing entry: client/assets/img/
+[debug] [2024-12-14T14:04:59.904Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/img/
+[debug] [2024-12-14T14:04:59.905Z] [unzip] Entry: client/assets/img/database.png (compressed_size=29449 bytes, uncompressed_size=29988 bytes)
+[debug] [2024-12-14T14:04:59.905Z] [unzip] Processing entry: client/assets/img/database.png
+[debug] [2024-12-14T14:04:59.905Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/img
+[debug] [2024-12-14T14:04:59.905Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/img/database.png
+[debug] [2024-12-14T14:04:59.907Z] [unzip] Entry: client/assets/provider-icons/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.908Z] [unzip] Processing entry: client/assets/provider-icons/
+[debug] [2024-12-14T14:04:59.908Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/
+[debug] [2024-12-14T14:04:59.908Z] [unzip] Entry: client/assets/provider-icons/auth_service_saml.svg (compressed_size=575 bytes, uncompressed_size=1226 bytes)
+[debug] [2024-12-14T14:04:59.908Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_saml.svg
+[debug] [2024-12-14T14:04:59.908Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.909Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_saml.svg
+[debug] [2024-12-14T14:04:59.911Z] [unzip] Entry: client/assets/provider-icons/auth_service_phone.svg (compressed_size=261 bytes, uncompressed_size=414 bytes)
+[debug] [2024-12-14T14:04:59.911Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_phone.svg
+[debug] [2024-12-14T14:04:59.911Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.912Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_phone.svg
+[debug] [2024-12-14T14:04:59.913Z] [unzip] Entry: client/assets/provider-icons/auth_service_facebook.svg (compressed_size=289 bytes, uncompressed_size=457 bytes)
+[debug] [2024-12-14T14:04:59.914Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2024-12-14T14:04:59.914Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.915Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2024-12-14T14:04:59.916Z] [unzip] Entry: client/assets/provider-icons/auth_service_game_center.svg (compressed_size=991 bytes, uncompressed_size=3921 bytes)
+[debug] [2024-12-14T14:04:59.917Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2024-12-14T14:04:59.917Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.918Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2024-12-14T14:04:59.927Z] [unzip] Entry: client/assets/provider-icons/auth_service_apple.svg (compressed_size=230 bytes, uncompressed_size=334 bytes)
+[debug] [2024-12-14T14:04:59.927Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_apple.svg
+[debug] [2024-12-14T14:04:59.927Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.928Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_apple.svg
+[debug] [2024-12-14T14:04:59.931Z] [unzip] Entry: client/assets/provider-icons/auth_service_github.svg (compressed_size=466 bytes, uncompressed_size=838 bytes)
+[debug] [2024-12-14T14:04:59.931Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_github.svg
+[debug] [2024-12-14T14:04:59.932Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.932Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_github.svg
+[debug] [2024-12-14T14:04:59.934Z] [unzip] Entry: client/assets/provider-icons/auth_service_mslive.svg (compressed_size=203 bytes, uncompressed_size=378 bytes)
+[debug] [2024-12-14T14:04:59.934Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2024-12-14T14:04:59.934Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.934Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2024-12-14T14:04:59.936Z] [unzip] Entry: client/assets/provider-icons/auth_service_yahoo.svg (compressed_size=577 bytes, uncompressed_size=1182 bytes)
+[debug] [2024-12-14T14:04:59.936Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2024-12-14T14:04:59.936Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.937Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2024-12-14T14:04:59.938Z] [unzip] Entry: client/assets/provider-icons/auth_service_twitter.svg (compressed_size=444 bytes, uncompressed_size=751 bytes)
+[debug] [2024-12-14T14:04:59.938Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2024-12-14T14:04:59.938Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.939Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2024-12-14T14:04:59.940Z] [unzip] Entry: client/assets/provider-icons/auth_service_play_games.svg (compressed_size=565 bytes, uncompressed_size=1173 bytes)
+[debug] [2024-12-14T14:04:59.940Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2024-12-14T14:04:59.940Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.941Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2024-12-14T14:04:59.942Z] [unzip] Entry: client/assets/provider-icons/auth_service_email.svg (compressed_size=228 bytes, uncompressed_size=326 bytes)
+[debug] [2024-12-14T14:04:59.942Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_email.svg
+[debug] [2024-12-14T14:04:59.942Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.942Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_email.svg
+[debug] [2024-12-14T14:04:59.944Z] [unzip] Entry: client/assets/provider-icons/auth_service_google.svg (compressed_size=409 bytes, uncompressed_size=720 bytes)
+[debug] [2024-12-14T14:04:59.944Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_google.svg
+[debug] [2024-12-14T14:04:59.944Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.944Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_google.svg
+[debug] [2024-12-14T14:04:59.945Z] [unzip] Entry: client/assets/provider-icons/auth_service_oidc.svg (compressed_size=414 bytes, uncompressed_size=858 bytes)
+[debug] [2024-12-14T14:04:59.946Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2024-12-14T14:04:59.946Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons
+[debug] [2024-12-14T14:04:59.946Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2024-12-14T14:04:59.947Z] [unzip] Entry: client/browserconfig.xml (compressed_size=491 bytes, uncompressed_size=822 bytes)
+[debug] [2024-12-14T14:04:59.947Z] [unzip] Processing entry: client/browserconfig.xml
+[debug] [2024-12-14T14:04:59.947Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.948Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/browserconfig.xml
+[debug] [2024-12-14T14:04:59.949Z] [unzip] Entry: client/favicon-32x32.png (compressed_size=475 bytes, uncompressed_size=475 bytes)
+[debug] [2024-12-14T14:04:59.949Z] [unzip] Processing entry: client/favicon-32x32.png
+[debug] [2024-12-14T14:04:59.949Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client
+[debug] [2024-12-14T14:04:59.950Z] [unzip] Writing file: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/client/favicon-32x32.png
+[debug] [2024-12-14T14:04:59.950Z] [unzip] Entry: server/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.950Z] [unzip] Processing entry: server/
+[debug] [2024-12-14T14:04:59.951Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/
+[debug] [2024-12-14T14:04:59.951Z] [unzip] Entry: server/server.mjs.map (compressed_size=296496 bytes, uncompressed_size=1355667 bytes)
+[debug] [2024-12-14T14:04:59.951Z] [unzip] Processing entry: server/server.mjs.map
+[debug] [2024-12-14T14:04:59.951Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server
+[debug] [2024-12-14T14:04:59.951Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/server.mjs.map
+[debug] [2024-12-14T14:04:59.967Z] [unzip] Entry: server/server.mjs (compressed_size=315701 bytes, uncompressed_size=1172682 bytes)
+[debug] [2024-12-14T14:04:59.967Z] [unzip] Processing entry: server/server.mjs
+[debug] [2024-12-14T14:04:59.967Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server
+[debug] [2024-12-14T14:04:59.967Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/server.mjs
+[debug] [2024-12-14T14:04:59.980Z] [unzip] Entry: server/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2024-12-14T14:04:59.980Z] [unzip] Processing entry: server/assets/
+[debug] [2024-12-14T14:04:59.980Z] [unzip] mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/assets/
+[debug] [2024-12-14T14:04:59.980Z] [unzip] Entry: server/assets/multipart-parser-DGCUZdXu.mjs.map (compressed_size=4791 bytes, uncompressed_size=17918 bytes)
+[debug] [2024-12-14T14:04:59.980Z] [unzip] Processing entry: server/assets/multipart-parser-DGCUZdXu.mjs.map
+[debug] [2024-12-14T14:04:59.980Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/assets
+[debug] [2024-12-14T14:04:59.981Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/assets/multipart-parser-DGCUZdXu.mjs.map
+[debug] [2024-12-14T14:04:59.982Z] [unzip] Entry: server/assets/multipart-parser-DGCUZdXu.mjs (compressed_size=2621 bytes, uncompressed_size=10390 bytes)
+[debug] [2024-12-14T14:04:59.982Z] [unzip] Processing entry: server/assets/multipart-parser-DGCUZdXu.mjs
+[debug] [2024-12-14T14:04:59.982Z] [unzip] else mkdir: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/assets
+[debug] [2024-12-14T14:04:59.982Z] [unzip] deflating: /home/kherld/.cache/firebase/emulators/ui-v1.14.0/server/assets/multipart-parser-DGCUZdXu.mjs
