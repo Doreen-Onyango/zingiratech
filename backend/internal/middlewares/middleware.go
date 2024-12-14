@@ -5,22 +5,36 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/Doreen-Onyango/zingiratech/backend/internal/auth"
 	"github.com/Doreen-Onyango/zingiratech/backend/internal/handlers"
-	"github.com/Doreen-Onyango/zingiratech/backend/internal/utils"
 )
 
-var validRoutes = map[string]bool{
-	"/":      true,
-	"/about": true,
+// Route configuration for dynamic and static routes
+var routes = map[string]struct {
+	RequiresAuth bool
+}{
+	"/":          {RequiresAuth: false},
+	"/about":     {RequiresAuth: false},
+	"/signup":    {RequiresAuth: false},
+	"/login":     {RequiresAuth: false},
+	"/dashboard": {RequiresAuth: true},
 }
 
 // Supported static file extensions
 var validExtensions = []string{".css", ".js", ".jpg", ".png", ".gif", ".svg"}
 
-// Middleware type and chaining function
+// Middleware type for chaining
 type Middleware func(http.Handler) http.Handler
 
-// Middleware for logging requests
+// Middleware chaining function
+func ChainMiddlewares(handler http.Handler, middlewares ...Middleware) http.Handler {
+	for _, mw := range middlewares {
+		handler = mw(handler)
+	}
+	return handler
+}
+
+// Logger middleware for request logging
 func Logger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Request: %s %s from %s", r.Method, r.URL.Path, r.RemoteAddr)
@@ -28,58 +42,7 @@ func Logger(next http.Handler) http.Handler {
 	})
 }
 
-// InitRoutes initializes all application routes.
-func InitRoutes(mux *http.ServeMux) {
-	dir, err := utils.GetProjectRootPath("frontend", "static")
-	if err != nil {
-		log.Fatalf("Error finding static directory: %v", err)
-	}
-	fs := http.FileServer(http.Dir(dir))
-	mux.Handle("/static/", http.StripPrefix("/static/", fs))
-
-	mux.HandleFunc("/", handlers.HomeHandler)
-	mux.HandleFunc("/about", handlers.AboutHandler)
-}
-
-// RouteChecker acts as middleware to validate and handle requests.
-func RouteChecker(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if strings.HasPrefix(r.URL.Path, "/static/") {
-			if !isValidExtension(r.URL.Path) {
-				handlers.ForbiddenHandler(w, r)
-				return
-			}
-			next.ServeHTTP(w, r)
-			return
-		}
-
-		if _, ok := validRoutes[r.URL.Path]; !ok {
-			handlers.NotFoundHandler(w, r)
-			return
-		}
-
-		defer func() {
-			if err := recover(); err != nil {
-				log.Printf("Recovered from panic: %v (Request: %s)", err, r.URL.Path)
-				handlers.InternalServerHandler(w, r)
-			}
-		}()
-
-		next.ServeHTTP(w, r)
-	})
-}
-
-// isValidExtension checks if a file path has a valid extension.
-func isValidExtension(path string) bool {
-	for _, ext := range validExtensions {
-		if strings.HasSuffix(path, ext) {
-			return true
-		}
-	}
-	return false
-}
-
-// Middleware for recovering from panics
+// Recovery middleware to handle panics gracefully
 func Recovery(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
@@ -92,10 +55,15 @@ func Recovery(next http.Handler) http.Handler {
 	})
 }
 
-// Middleware for unified route checking and static file validation
-func UnifiedRouteChecker(next http.Handler) http.Handler {
+// StaticFileHandler serves static files
+func StaticFileHandler(staticDir string) http.Handler {
+	fs := http.FileServer(http.Dir(staticDir))
+	return http.StripPrefix("/static/", fs)
+}
+
+// RouteChecker middleware validates dynamic and static routes
+func RouteChecker(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Handle static files
 		if strings.HasPrefix(r.URL.Path, "/static/") {
 			if !isValidExtension(r.URL.Path) {
 				handlers.ForbiddenHandler(w, r)
@@ -105,8 +73,12 @@ func UnifiedRouteChecker(next http.Handler) http.Handler {
 			return
 		}
 
-		// Validate dynamic routes
-		if _, ok := validRoutes[r.URL.Path]; !ok {
+		if route, exists := routes[r.URL.Path]; exists {
+			if route.RequiresAuth && !isAuthenticated(r) {
+				handlers.ForbiddenHandler(w, r)
+				return
+			}
+		} else {
 			handlers.NotFoundHandler(w, r)
 			return
 		}
@@ -115,16 +87,42 @@ func UnifiedRouteChecker(next http.Handler) http.Handler {
 	})
 }
 
-// Middleware for handling CORS
+// CORS middleware to handle cross-origin requests
 func CORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 		if r.Method == http.MethodOptions {
 			w.WriteHeader(http.StatusOK)
 			return
 		}
 		next.ServeHTTP(w, r)
 	})
+}
+
+// Helper function to check valid file extensions
+func isValidExtension(path string) bool {
+	for _, ext := range validExtensions {
+		if strings.HasSuffix(path, ext) {
+			return true
+		}
+	}
+	return false
+}
+
+// Helper function to check if a user is authenticated
+func isAuthenticated(r *http.Request) bool {
+	authService, err := auth.NewAuthService()
+	if err != nil {
+		log.Fatalf("Failed to initialize Firebase: %v", err)
+	}
+	authHeader := r.Header.Get("Authorization")
+	if authHeader == "" || !strings.HasPrefix(authHeader, "Bearer ") {
+		return false
+	}
+
+	idToken := strings.TrimPrefix(authHeader, "Bearer ")
+	_, err = authService.VerifyIDToken(r.Context(), idToken)
+	return err == nil
 }

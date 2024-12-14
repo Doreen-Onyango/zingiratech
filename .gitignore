@@ -1,0 +1,4 @@
+backend/config/firebase
+frontend/static/js/firebase-config.js
+go.mod
+go.sum
