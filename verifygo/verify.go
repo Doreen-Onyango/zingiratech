@@ -31,3 +31,23 @@ func sendOtp(to string) {
 		fmt.Printf("Sent verification '%s'\n", *resp.Sid)
 	}
 }
+
+func checkOtp(to string) {
+	var code string
+	fmt.Println("Please check your phone and enter the code:")
+	fmt.Scanln(&code)
+
+	params := &openapi.CreateVerificationCheckParams{}
+	params.SetTo(to)
+	params.SetCode(code)
+
+	resp, err := client.VerifyV2.CreateVerificationCheck(VERIFY_SERVICE_SID, params)
+
+	if err != nil {
+		fmt.Println(err.Error())
+	} else if *resp.Status == "approved" {
+		fmt.Println("Correct!")
+	} else {
+		fmt.Println("Incorrect!")
+	}
+}
