@@ -13,7 +13,7 @@ import (
 var (
 	TemplateCache = make(map[string]*template.Template)
 	fn            = template.FuncMap{}
-	mu            sync.RWMutex // Ensure concurrency safety
+	mu            sync.RWMutex
 )
 
 // RenderServerErrorTemplate renders a fallback error page for server errors.
@@ -74,21 +74,18 @@ func LoadTemplates() error {
 		return fmt.Errorf("could not find project root: %w", err)
 	}
 
-	// Load pages
 	pagePattern := filepath.Join(baseDir, "*.page.html")
 	pages, err := filepath.Glob(pagePattern)
 	if err != nil {
 		return fmt.Errorf("error finding page templates: %w", err)
 	}
 
-	// Load layouts
 	layoutPattern := filepath.Join(baseDir, "*.layout.html")
 	layouts, err := filepath.Glob(layoutPattern)
 	if err != nil {
 		return fmt.Errorf("error finding layout templates: %w", err)
 	}
 
-	// Parse templates
 	for _, page := range pages {
 		name := filepath.Base(page)
 
