@@ -23,3 +23,15 @@ func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotFound)
 	utils.RenderTemplate(w, "404.page.html", nil)
 }
+
+// ForbiddenHandler sends a 403 Forbidden response.
+func ForbiddenHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusForbidden)
+	utils.RenderTemplate(w, "403.page.html", nil)
+}
+
+// InternalServerHandler sends a 500 Internal Server Error response.
+func InternalServerHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusInternalServerError)
+	utils.RenderTemplate(w, "500.page.html", nil)
+}
