@@ -18,7 +18,18 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	utils.RenderTemplate(w, "about.page.html", nil)
 }
-
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	utils.RenderTemplate(w, "login.page.html", nil)
+}
+func SignupHandler(w http.ResponseWriter, r *http.Request) {
+	utils.RenderTemplate(w, "signup.page.html", nil)
+}
+func DashboardHandler(w http.ResponseWriter, r *http.Request) {
+	utils.RenderTemplate(w, "dashboard.page.html", nil)
+}
+func SchedulePickupHandler(w http.ResponseWriter, r *http.Request) {
+	utils.RenderTemplate(w, "pickup.page.html", nil)
+}
 func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotFound)
 	utils.RenderTemplate(w, "404.page.html", nil)

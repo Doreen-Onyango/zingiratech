@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Doreen-Onyango/zingiratech/backend/internal/handlers"
+	"github.com/Doreen-Onyango/zingiratech/backend/internal/middlewares"
 	"github.com/Doreen-Onyango/zingiratech/backend/internal/utils"
 )
 
@@ -26,10 +27,18 @@ func InitRoutes(mux *http.ServeMux) error {
 
 // registerRoutes sets up route handlers for the application.
 func registerRoutes(mux *http.ServeMux) {
+	// Public routes
 	mux.HandleFunc("/", handlers.HomeHandler)
 	mux.HandleFunc("/about", handlers.AboutHandler)
+	mux.HandleFunc("/login", handlers.LoginHandler)
+	mux.HandleFunc("/signup", handlers.SignupHandler)
 
-	mux.HandleFunc("/contact", func(w http.ResponseWriter, r *http.Request) {
-		http.Error(w, "Contact page is under construction.", http.StatusNotImplemented)
-	})
+	// Protected routes
+	protectedRoutes := http.NewServeMux()
+	protectedRoutes.HandleFunc("/dashboard", handlers.DashboardHandler)
+	protectedRoutes.HandleFunc("/schedule-pickup", handlers.SchedulePickupHandler)
+	
+	// Apply auth middleware to protected routes
+	mux.Handle("/dashboard/", middlewares.AuthMiddleware(protectedRoutes))
+	mux.Handle("/api/", middlewares.AuthMiddleware(protectedRoutes))
 }

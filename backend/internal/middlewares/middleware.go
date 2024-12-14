@@ -10,8 +10,11 @@ import (
 )
 
 var validRoutes = map[string]bool{
-	"/":      true,
-	"/about": true,
+	"/":       true,
+	"/about":  true,
+	"/signup": true,
+	"/login":  true,
+	"/dashboard": true,
 }
 
 // Supported static file extensions
@@ -39,6 +42,9 @@ func InitRoutes(mux *http.ServeMux) {
 
 	mux.HandleFunc("/", handlers.HomeHandler)
 	mux.HandleFunc("/about", handlers.AboutHandler)
+	mux.HandleFunc("/signup", handlers.SignupHandler)
+	mux.HandleFunc("/login", handlers.LoginHandler)
+	mux.HandleFunc("/dashboard", handlers.DashboardHandler)
 }
 
 // RouteChecker acts as middleware to validate and handle requests.
