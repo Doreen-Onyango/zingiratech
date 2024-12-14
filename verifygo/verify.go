@@ -4,27 +4,33 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/twilio/twilio-go"
 	verifyV2 "github.com/twilio/twilio-go/rest/verify/v2"
 )
 
-// Twilio client (initialized once)
 var (
 	client    *twilio.RestClient
 	verifySid string
 )
 
 func init() {
-	// Read credentials from environment variables
+	// Load environment variables early to ensure credentials are available
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	// Read Twilio credentials from environment variables
 	accountSid := os.Getenv("TWILIO_ACCOUNT_SID")
 	authToken := os.Getenv("TWILIO_AUTH_TOKEN")
 	verifySid = os.Getenv("TWILIO_VERIFY_SID")
 
 	if accountSid == "" || authToken == "" || verifySid == "" {
-		fmt.Println("Error: Missing Twilio credentials in environment variables")
-		os.Exit(1)
+		log.Fatal("Error: Missing Twilio credentials in environment variables")
 	}
 
 	client = twilio.NewRestClientWithParams(twilio.ClientParams{
@@ -34,11 +40,11 @@ func init() {
 }
 
 func main() {
-	// Define a command-line flag for the phone number
+	// Define command-line flag for phone number
 	phoneNumber := flag.String("phone", "", "The phone number to verify (e.g., +1234567890)")
 	flag.Parse()
 
-	// Check if the phone number is provided
+	// Ensure a phone number was provided
 	if *phoneNumber == "" {
 		fmt.Println("Error: Please provide a phone number using the -phone flag")
 		os.Exit(1)
@@ -50,7 +56,7 @@ func main() {
 		return
 	}
 
-	// Step 2: Read OTP from user
+	// Step 2: Get OTP from user input
 	otpCode := getOTPFromUser()
 
 	// Step 3: Verify OTP
@@ -65,9 +71,10 @@ func sendVerification(to, channel string) error {
 	params.SetTo(to)
 	params.SetChannel(channel)
 
+	// Send the verification request to Twilio
 	verification, err := client.VerifyV2.CreateVerification(verifySid, params)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to send verification: %v", err)
 	}
 
 	fmt.Printf("Verification sent: %v\n", *verification.Status)
@@ -79,9 +86,10 @@ func verifyOTP(to, code string) error {
 	params.SetTo(to)
 	params.SetCode(code)
 
+	// Verify the OTP
 	verificationCheck, err := client.VerifyV2.CreateVerificationCheck(verifySid, params)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to verify OTP: %v", err)
 	}
 
 	fmt.Printf("Verification status: %v\n", *verificationCheck.Status)
@@ -92,5 +100,6 @@ func getOTPFromUser() string {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Please enter the OTP: ")
 	otpCode, _ := reader.ReadString('\n')
+	// Trim any newline or extra spaces
 	return otpCode[:len(otpCode)-1] // Remove trailing newline character
 }
