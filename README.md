@@ -1,4 +1,4 @@
-# ZinginraTech
+# ZingiraTech
 ZingiraTech is an innovative platform designed to address Kenya's growing e-waste management crisis. Kenya generates approximately 51,300 metric tonnes of e-waste annually, but only 5% is safely recycled. The improper disposal of the remaining 95% leads to environmental degradation and health risks caused by toxic substances like lead and mercury, as well as missed opportunities to recover valuable materials. By connecting users of electronic waste (e-waste) with certified recycling companies, ZingiraTech aims to foster responsible disposal, enhance recycling efforts, and create a sustainable, healthy environment for future generations.
 
 ## Features
